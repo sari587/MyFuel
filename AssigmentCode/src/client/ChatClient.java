@@ -17,7 +17,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import Entity.CompanyMarketingRep;
-import Server.employee;
+
 
 
 /**
@@ -42,7 +42,7 @@ public class ChatClient extends AbstractClient {
 	// Faculty(null,null));
 	public static boolean awaitResponse = false;
 
-	public static ObservableList<employee> ee = FXCollections.observableArrayList();;
+	
 	// Constructors ****************************************************
 
 	/**
