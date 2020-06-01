@@ -83,9 +83,9 @@ public class MainMenuController {
             }
         };
 
-        configureTab(userProfileTab, "User\nProfile", "/application/user-profile.png", userProfileContainer, getClass().getResource("userprofile.fxml"), replaceBackgroundColorHandler);
-        configureTab(settingsTab, "Settings", "/application/settings.png", settingsContainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
-        configureTab(logoutTab, "Logout", "/application/logout.png", null, null, logoutHandler);
+        configureTab(userProfileTab, "User\nProfile", "/controller/user-profile.png", userProfileContainer, getClass().getResource("userprofile.fxml"), replaceBackgroundColorHandler);
+        configureTab(settingsTab, "Settings", "/controller/settings.png", settingsContainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
+        configureTab(logoutTab, "Logout", "/controller/logout.png", null, null, logoutHandler);
 
         userProfileTab.setStyle("-fx-background-color: -fx-focus-color;");
     }
