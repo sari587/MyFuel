@@ -69,7 +69,7 @@ public class ChatClient extends AbstractClient {
 		Packet op = (Packet) msg;
 		switch (op.getActions()) {
 		case login: {
-
+			System.out.println(op.GetObj());//obj the server seds in login case is a String
 			break;
 		}
 		case singup: {
@@ -101,13 +101,7 @@ public class ChatClient extends AbstractClient {
 			awaitResponse = true;
 			sendToServer(message);
 			// wait for response
-			while (awaitResponse) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
+			
 		}
 
 		catch (IOException e) {

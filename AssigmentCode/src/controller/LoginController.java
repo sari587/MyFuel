@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import Entity.LoginAssistant;
 import client.ClientUI;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -43,6 +44,11 @@ public class LoginController extends Application{
             return;
         }
 
+        LoginAssistant login = new LoginAssistant(emailField.getText(),passwordField.getText());
+        Packet loginPacket = new Packet(Packet.actions.login,login);
+        ClientUI.chat.accept(loginPacket);
+        
+        
         AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Login Successful!", 
                 "Welcome " + emailField.getText());
        // ClientUI.chat.accept("")

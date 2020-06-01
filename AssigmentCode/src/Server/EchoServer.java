@@ -3,11 +3,13 @@
 // license found at www.lloseng.com 
 package Server;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Entity.Account;
 import Entity.CompanyMarketingRep;
 import controller.Packet;
 import javafx.collections.FXCollections;
@@ -55,16 +57,56 @@ public class EchoServer extends AbstractServer {
 	 * @param msg    The message received from the client.
 	 * @param client The connection from which the message originated.
 	 * @param
+	 * @throws IOException 
 	 */
-	public void handleMessageFromClient(Object msg, ConnectionToClient client) {
+	public void handleMessageFromClient(Object msg, ConnectionToClient client){
 		// System.out.println("Message received: " + msg + " from " + client);
 
 		Packet op = (Packet) msg;
 		switch (op.getActions()) {
 		case login: {
-
+			
+			Account account = (Account)op.GetObj();
+			Statement s;
+			//SELECT Username FROM project.account where Username LIKE '%razi%';
+			try {
+				s=mysqlConnection.GetCon().createStatement();
+				ResultSet rs = s.executeQuery("SELECT Username FROM project.account where Username LIKE '%"+account.getEmail()+"%'");
+				if(rs.getString(0).equals(null))
+				{
+					Packet ans = new Packet(Packet.actions.login,"noUsername");
+					try {
+						client.sendToClient(ans);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}		
+				if(rs.getString(1).equals(account.getPassword()) ) {
+					Packet ans = new Packet(Packet.actions.login,"worgpass");
+					try {
+						client.sendToClient(ans);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
+				}				
+				if(rs.getString(1).equals(account.getPassword())) {
+					Packet ans = new Packet(Packet.actions.login,"loginsucc");
+					try {
+						client.sendToClient(ans);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		}
+		
 		case singup: {
 			try {
 				CompanyMarketingRep.OnAddedUser(msg);
