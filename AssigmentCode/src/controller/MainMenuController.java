@@ -28,13 +28,22 @@ public class MainMenuController {
 
     @FXML
     private Tab userProfileTab;
-
+private String s;
     @FXML
     private AnchorPane userProfileContainer;
-
+    @FXML
+    private  Tab[] n;
+    
     @FXML
     private Tab settingsTab;
-
+    @FXML
+    private Tab ordersTab;
+    @FXML
+    private AnchorPane OrdersContainer;
+    @FXML
+    private Tab PaymentsTap;
+    @FXML
+    private AnchorPane PaymentsCountainer;
     @FXML
     private AnchorPane settingsContainer;
 
@@ -49,12 +58,15 @@ public class MainMenuController {
 
     @FXML
     public void initialize() {
+    	System.out.println("asdasd");
+    	  n=new Tab[] {userProfileTab,ordersTab,PaymentsTap,settingsTab,logoutTab};
         configureView();
     }
 
     /// Private
 
     private void configureView() {
+    	
         tabContainer.setTabMinWidth(tabWidth);
         tabContainer.setTabMaxWidth(tabWidth);
         tabContainer.setTabMinHeight(tabWidth);
@@ -63,13 +75,17 @@ public class MainMenuController {
 
         EventHandler<Event> replaceBackgroundColorHandler = event -> {
             lastSelectedTabIndex = tabContainer.getSelectionModel().getSelectedIndex();
-
             Tab currentTab = (Tab) event.getTarget();
-            if (currentTab.isSelected()) {
-                currentTab.setStyle("-fx-background-color: -fx-focus-color;");
-            } else {
-                currentTab.setStyle("-fx-background-color: -fx-accent;");
-            }
+            //System.out.println("123");
+          for (Tab i:n) {
+        	  if(currentTab.getId().equals(i.getId()))
+        		  i.setStyle("-fx-background-color: -fx-focus-color;");
+        		 
+        	  else 
+        		  i.setStyle("");
+		}
+           
+            
         };
 
         EventHandler<Event> logoutHandler = event -> {
@@ -85,9 +101,11 @@ public class MainMenuController {
 
         configureTab(userProfileTab, "User\nProfile", "/controller/user-profile.png", userProfileContainer, getClass().getResource("userprofile.fxml"), replaceBackgroundColorHandler);
         configureTab(settingsTab, "Settings", "/controller/settings.png", settingsContainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
+        configureTab(ordersTab, "Orders", "/controller/settings.png", OrdersContainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
+        configureTab(PaymentsTap, "Payments", "/controller/settings.png", PaymentsCountainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
         configureTab(logoutTab, "Logout", "/controller/logout.png", null, null, logoutHandler);
 
-        userProfileTab.setStyle("-fx-background-color: -fx-focus-color;");
+        userProfileTab.setStyle("-fx-background-color: -fx-accent;");
     }
 
     private void configureTab(Tab tab, String title, String iconPath, AnchorPane containerPane, URL resourceURL, EventHandler<Event> onSelectionChangedEvent) {

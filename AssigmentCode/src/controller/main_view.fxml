@@ -9,10 +9,20 @@
    <children>
       <JFXTabPane fx:id="tabContainer" prefHeight="128.0" prefWidth="308.0" side="LEFT" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab fx:id="userProfileTab" closable="false" text="User Profile">
+            <Tab fx:id="userProfileTab" closable="false" text="Home">
                <content>
                   <AnchorPane fx:id="userProfileContainer" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>
+            </Tab>
+            <Tab fx:id="ordersTab" text="Orders">
+              <content>
+                <AnchorPane fx:id="OrdersContainer" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="PaymentsTap" text="Payments">
+              <content>
+                <AnchorPane fx:id="PaymentsCountainer" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
             </Tab>
             <Tab fx:id="settingsTab" closable="false" text="Settings">
                <content>
