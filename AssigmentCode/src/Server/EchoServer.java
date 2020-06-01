@@ -120,25 +120,7 @@ public class EchoServer extends AbstractServer {
 		s.executeUpdate("UPDATE `test`.`employee` SET `job` = '" + value + "' WHERE (`id` = '" + id + "')");
 	}
 
-	public static ObservableList<employee> GetDataFromDataBase(Connection con) {
-		ObservableList<employee> people = FXCollections.observableArrayList();
-
-		Statement stmt;
-		try {
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM employee;");
-			while (rs.next()) {
-				people.add(new employee(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6)));
-			}
-			rs.close();
-			return people;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return people;
-	}
-
+	
 	/**
 	 * This method overrides the one in the superclass. Called when the server
 	 * starts listening for connections.
