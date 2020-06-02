@@ -1,6 +1,7 @@
-package application;
+package Server;
 
-import Server.ServerUI;
+import application.ServerUI;
+import application.*;
 import client.ClientUI;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,7 +54,7 @@ public class ServerPortFrameController {
 	public void start(Stage primaryStage) throws Exception {
 		// Parent root =
 		// FXMLLoader.load(getClass().getResource("/application/ServerPort.fxml"));
-		Parent root = FXMLLoader.load(getClass().getResource("/application/ServerPort.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui/ServerPort.fxml"));
 		Scene scene = new Scene(root);
 		// scene.getStylesheets().add(getClass().getResource("/gui/ServerPort.css").toExternalForm());
 		primaryStage.setTitle("Client");

@@ -82,7 +82,7 @@ public class SignUpController extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/controller/SignUp.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui/SignUp.fxml"));
 
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Student Managment Tool");
@@ -143,8 +143,8 @@ public class SignUpController extends Application {
 
 	@FXML
 	private void initialize() {
-		Image Micon = new Image("/controller/MasterCardIcon.png");
-		Image Vicon = new Image("/controller/VisaIcon.png");
+		Image Micon = new Image("/gui/MasterCardIcon.png");
+		Image Vicon = new Image("/gui/VisaIcon.png");
 		MasterCardIcon.setImage(Micon);
 		VisaIcon.setImage(Vicon);
 		combobox.setItems(Items);

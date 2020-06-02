@@ -6,10 +6,13 @@ package client;
 
 import client.*;
 import common.ChatIF;
+import controller.AlertHelper;
+import controller.LoginController;
 import controller.Packet;
 import controller.SignUpController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import ocsf.client.AbstractClient;
 
 import java.io.*;
@@ -69,7 +72,14 @@ public class ChatClient extends AbstractClient {
 		Packet op = (Packet) msg;
 		switch (op.getActions()) {
 		case login: {
-			System.out.println(op.GetObj());//obj the server seds in login case is a String
+			//obj the server seds in login case is a String //noUsername worgpass success
+			
+			try {
+				LoginController.lc.handleLoginFromServer(msg);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		}
 		case singup: {

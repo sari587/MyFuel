@@ -1,8 +1,12 @@
 package Entity;
 
+import java.io.Serializable;
 
-
-public class LoginAssistant {
+public class LoginAssistant implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7157174747746044009L;
 	private String username;
 	private String password;
 

@@ -99,11 +99,11 @@ private String s;
             }
         };
 
-        configureTab(userProfileTab, "User\nProfile", "/controller/user-profile.png", userProfileContainer, getClass().getResource("userprofile.fxml"), replaceBackgroundColorHandler);
-        configureTab(settingsTab, "Settings", "/controller/settings.png", settingsContainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
-        configureTab(ordersTab, "Orders", "/controller/settings.png", OrdersContainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
-        configureTab(PaymentsTap, "Payments", "/controller/settings.png", PaymentsCountainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
-        configureTab(logoutTab, "Logout", "/controller/logout.png", null, null, logoutHandler);
+        configureTab(userProfileTab, "User\nProfile", "/gui/user-profile.png", userProfileContainer, getClass().getResource("userprofile.fxml"), replaceBackgroundColorHandler);
+        configureTab(settingsTab, "Settings", "/gui/settings.png", settingsContainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
+        configureTab(ordersTab, "Orders", "/gui/settings.png", OrdersContainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
+        configureTab(PaymentsTap, "Payments", "/gui/settings.png", PaymentsCountainer, getClass().getResource("settings.fxml"), replaceBackgroundColorHandler);
+        configureTab(logoutTab, "Logout", "/gui/logout.png", null, null, logoutHandler);
 
         userProfileTab.setStyle("-fx-background-color: -fx-accent;");
     }

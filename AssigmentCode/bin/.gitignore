@@ -1,4 +1,4 @@
-/controller/
-/Entity/
+/application/
+/gui/
 /Server/
-/client/
+/controller/

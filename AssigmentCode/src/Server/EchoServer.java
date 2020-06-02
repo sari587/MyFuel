@@ -11,6 +11,7 @@ import java.sql.Statement;
 
 import Entity.Account;
 import Entity.CompanyMarketingRep;
+import Entity.LoginAssistant;
 import controller.Packet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -65,36 +66,45 @@ public class EchoServer extends AbstractServer {
 		Packet op = (Packet) msg;
 		switch (op.getActions()) {
 		case login: {
-			
-			Account account = (Account)op.GetObj();
+			System.out.println("yessssssssss");
+			LoginAssistant account = (LoginAssistant)op.GetObj();
 			Statement s;
 			//SELECT Username FROM project.account where Username LIKE '%razi%';
 			try {
 				s=mysqlConnection.GetCon().createStatement();
-				ResultSet rs = s.executeQuery("SELECT Username FROM project.account where Username LIKE '%"+account.getEmail()+"%'");
-				if(rs.getString(0).equals(null))
+				ResultSet rs = s.executeQuery("SELECT * FROM project.account where Username LIKE '%"+account.getUsername()+"%'");
+				//System.out.println(rs);
+				
+				if(!rs.next())
 				{
 					Packet ans = new Packet(Packet.actions.login,"noUsername");
+					System.out.println("no username");
 					try {
 						client.sendToClient(ans);
+						return;
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
-				}		
-				if(rs.getString(1).equals(account.getPassword()) ) {
+					}//noUsername worgpass success
+				}	
+				
+				if(!rs.getString(2).equals(account.getPassword()) ) {
+					System.out.println("wrongpass");
 					Packet ans = new Packet(Packet.actions.login,"worgpass");
 					try {
 						client.sendToClient(ans);
+						return;
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}					
 				}				
-				if(rs.getString(1).equals(account.getPassword())) {
-					Packet ans = new Packet(Packet.actions.login,"loginsucc");
+				if(rs.getString(2).equals(account.getPassword())) {
+					System.out.println("success");
+					Packet ans = new Packet(Packet.actions.login,"success");
 					try {
 						client.sendToClient(ans);
+						return;
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
