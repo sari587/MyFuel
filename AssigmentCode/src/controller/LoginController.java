@@ -49,34 +49,41 @@ public class LoginController extends Application implements Initializable {
 	private ActionEvent event;
 	@FXML
 	private Parent root;
-	
-	Window owner ;
+	@FXML
+	private Window owner;
 
-	
-	private  SceneSwitcher sc;
+	private SceneSwitcher sc;
+
 	@FXML
 	public void handleSubmitButtonAction(ActionEvent event) {
-		this.owner = submitButton.getScene().getWindow();
+
 
 		if (emailField.getText().isEmpty()) {
-			AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Form Error!", "Please enter your Username");
+			//AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Form Error!", "Please enter your Username");
+			alert();
 			return;
 		}
 		if (passwordField.getText().isEmpty()) {
-			AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Form Error!", "Please enter a password");
+			//AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Form Error!", "Please enter a password");
+			alert();
 			return;
 		}
 
 		LoginAssistant login = new LoginAssistant(emailField.getText(), passwordField.getText());
 		Packet loginPacket = new Packet(Packet.actions.login, login);
 		this.event = event;
-		
-		this.sc = new SceneSwitcher(event,"CustomerMain");
+
+		this.sc = new SceneSwitcher(event, "CustomerMain");
 		lc = this;
 		ClientUI.chat.accept(loginPacket);
-		
+
 	}
 
+	public void alert () {
+		this.owner = submitButton.getScene().getWindow();
+		AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Form Error!", "Please enter your Username");
+
+	}
 	public void ShowBtn(ActionEvent event) throws Exception {
 
 		((javafx.scene.Node) event.getSource()).getScene().getWindow().hide();
@@ -108,31 +115,32 @@ public class LoginController extends Application implements Initializable {
 		Packet op = (Packet) serverAnwer;
 		Window owner = submitButton.getScene().getWindow();
 		System.out.println((String) op.GetObj());
-		
+
 		if (((String) op.GetObj()).equals("noUsername")) {
 			System.out.println("there is no such uesrname");
-			AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Alert Message",
-					"There is no such User please contact company Marketin grep");
+			alert();
+			return;
 		}
-		
+
 		if (((String) op.GetObj()).equals("worgpass")) {
 			System.out.println("wrong password Please try again");
-			AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Alert Message", "Wrong password Please try again");
+			alert();
+			return;
 
 		}
 		if (((String) op.GetObj()).equals("success")) {
-            sc.swichScene();
+			sc.swichScene();
 		}
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		Media media = new Media("file:///C:/Snowy.mp4");
-		MediaPlayer player = new MediaPlayer(media);
-		mediaView.setMediaPlayer(player);
-		player.setVolume(0);
-		player.play();
+		// Media media = new Media("file:///C:/Snowy.mp4");
+		/// MediaPlayer player = new MediaPlayer(media);
+		// mediaView.setMediaPlayer(player);
+		// player.setVolume(0);
+		// player.play();
 	}
 
 }

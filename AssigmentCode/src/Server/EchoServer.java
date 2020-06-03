@@ -119,6 +119,8 @@ public class EchoServer extends AbstractServer {
 		
 		case singup: {
 			try {
+				System.out.println("sdvf");
+				
 				CompanyMarketingRep.OnAddedUser(msg);
 				Packet t = new Packet(Packet.actions.singup,"The Account Has Been Added");
 				client.sendToClient(t);

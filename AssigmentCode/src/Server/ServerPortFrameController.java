@@ -1,7 +1,6 @@
 package Server;
 
-import application.ServerUI;
-import application.*;
+
 import client.ClientUI;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,10 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ServerPortFrameController {
-	// private StudentFormController sfc;
-//ds
+
 	String temp = "";
-//////sari
 	@FXML
 	private Button btnExit = null;
 	@FXML

@@ -1,3 +1,4 @@
+
 package controller;
 
 import com.jfoenix.controls.JFXTabPane;
@@ -58,8 +59,7 @@ private String s;
 
     @FXML
     public void initialize() {
-    	System.out.println("asdasd");
-    	  n=new Tab[] {userProfileTab,ordersTab,PaymentsTap,settingsTab,logoutTab};
+    	 n=new Tab[] {userProfileTab,ordersTab,PaymentsTap,settingsTab,logoutTab};
         configureView();
     }
 
