@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.ImageInput?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.typeOrC">
+   <children>
+      <ImageView fitHeight="562.0" fitWidth="677.0" layoutX="-10.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../OneDrive/שולחן%20העבודה/Eng/beautiful-color-gradients-backgrounds-091-eternal-constance.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="185.0" layoutY="21.0" prefHeight="32.0" prefWidth="291.0" text="Choose your order please..." textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Separator layoutX="333.0" layoutY="94.0" orientation="VERTICAL" prefHeight="308.0" prefWidth="6.0" />
+      <Label layoutX="20.0" layoutY="85.0" prefHeight="46.0" prefWidth="291.0" text="Home Heating Fuel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="400.0" layoutY="85.0" prefHeight="46.0" prefWidth="185.0" text="Vehicle Fuel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="85.0" layoutY="149.0" prefHeight="46.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="67.0" fitWidth="69.0" layoutX="57.0" onMouseClicked="#choise">
+               <image>
+                  <Image url="@../../../../../OneDrive/שולחן%20העבודה/Eng/heating_96px.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <RadioButton fx:id="HomF" blendMode="COLOR_DODGE" layoutX="88.0" layoutY="206.0" mnemonicParsing="false" onAction="#choise" prefHeight="143.0" prefWidth="194.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <ImageInput />
+         </effect>
+      </RadioButton>
+      <RadioButton fx:id="RegF" blendMode="COLOR_DODGE" layoutX="435.0" layoutY="170.0" mnemonicParsing="false" onAction="#choise" prefHeight="165.0" prefWidth="118.0">
+         <effect>
+            <ImageInput />
+         </effect>
+      </RadioButton>
+      <ImageView fitHeight="259.0" fitWidth="243.0" layoutX="371.0" layoutY="131.0" onMouseClicked="#choise">
+         <image>
+            <Image url="@../../../../../AppData/Local/Temp/icons8_gas_station_200px_3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="237.0" fitWidth="237.0" layoutX="66.0" layoutY="156.0" onMouseClicked="#choise">
+         <image>
+            <Image url="@../../../../../AppData/Local/Temp/icons8_home_200px_1.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
