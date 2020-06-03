@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditcreditController">
+   <children>
+      <Text fill="#1f12d0" layoutX="170.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Credit" textAlignment="CENTER" wrappingWidth="203.13671875">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="26.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Required fields:" wrappingWidth="134.189453125">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="#da0b0b" layoutX="124.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="11.837890625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="42.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit owner:" />
+      <Text fill="#da0b0b" layoutX="30.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="17.837890625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="41.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credit or Debit card Number:" />
+      <Text fill="#da0b0b" layoutX="29.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="17.837890625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="41.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="payment Type " />
+      <Text fill="#da0b0b" layoutX="29.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="17.837890625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="42.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expiration Date:" />
+      <Text fill="#da0b0b" layoutX="31.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="17.837890625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="275.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CSC" wrappingWidth="32.234375" />
+      <Text layoutX="187.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#da0b0b" layoutX="265.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" wrappingWidth="17.837890625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="clickclose" layoutX="198.0" layoutY="329.0" mnemonicParsing="false" onAction="#onclick" prefHeight="32.0" prefWidth="63.0" style="-fx-background-color: #590; -fx-background-radius: 10px;" text="Cancel" />
+      <Button fx:id="Save" layoutX="288.0" layoutY="329.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="54.0" style="-fx-background-color: #590; -fx-background-radius: 10px;" text="Save" />
+      <ImageView fx:id="Visa" fitHeight="20.0" fitWidth="32.0" layoutX="131.0" layoutY="212.0" onMouseClicked="#PaymentType">
+         <image>
+            <Image url="@../../../../../Desktop/524px-Old_Visa_Logo.svg.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Isracard" fitHeight="20.0" fitWidth="32.0" layoutX="169.0" layoutY="213.0">
+         <image>
+            <Image url="@../../../../../Desktop/ישראכרט.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Mastercard" fitHeight="20.0" fitWidth="32.0" layoutX="211.0" layoutY="213.0">
+         <image>
+            <Image url="@../../../../../Desktop/mastercard.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="151.0" layoutY="132.0" promptText=" Name" />
+      <TextField layoutX="227.0" layoutY="174.0" promptText="Number" />
+      <TextField layoutX="140.0" layoutY="239.0" prefHeight="26.0" prefWidth="40.0" promptText="mm" />
+      <TextField layoutX="198.0" layoutY="239.0" prefHeight="26.0" prefWidth="32.0" promptText="yy" />
+      <TextField layoutX="312.0" layoutY="238.0" prefHeight="26.0" prefWidth="57.0" promptText="csc" />
+   </children>
+</AnchorPane>
