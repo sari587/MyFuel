@@ -1,4 +1,4 @@
-package controller;
+package application;
 
 import com.jfoenix.controls.JFXTabPane;
 import javafx.application.Platform;
@@ -9,7 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
@@ -17,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,10 +29,13 @@ public class MainMenuController {
 
     @FXML
     private JFXTabPane tabContainer;
-
+	@FXML
+	private Button Add;
+	@FXML
+	private Button Trck;
     @FXML
     private Tab userProfileTab;
-private String s;
+    private String s;
     @FXML
     private AnchorPane userProfileContainer;
     @FXML
@@ -145,5 +152,13 @@ private String s;
             }
         }
     }
+	public void addBtn() throws Exception { //saif  new updated func
+		//((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
+		Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Type.fxml"));
+        primaryStage.setTitle("Type");
+        primaryStage.setScene(new Scene(root, 665, 462));
+        primaryStage.show();
+	}
 
 }
