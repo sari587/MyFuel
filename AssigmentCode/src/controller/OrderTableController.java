@@ -2,6 +2,7 @@ package controller;
 
 import java.net.URL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Entity.Order;
@@ -36,15 +37,24 @@ public class OrderTableController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		Order o = new Order();
 		ResultSet rs = o.getOrders(); 
-	///qwfesgrdhtfjygkhu
+		
+		try {
+			while (rs.next()) {
+				orederList.add(new orderTable(rs.getString(3), rs.getString(1),rs.getInt(2), rs.getInt(4), rs.getString(6), rs.getString(7)));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		col_name.setCellValueFactory(new PropertyValueFactory<>("Order id"));
 		col_type.setCellValueFactory(new PropertyValueFactory<>("Order type"));
 		col_amount.setCellValueFactory(new PropertyValueFactory<>("Amount"));
 		col_cost.setCellValueFactory(new PropertyValueFactory<>("Cost"));
 		col_date.setCellValueFactory(new PropertyValueFactory<>("Order date"));
 		col_due.setCellValueFactory(new PropertyValueFactory<>("Due"));
-
-	
+		//
+		table.setItems(orederList);
 	}
 
 	
