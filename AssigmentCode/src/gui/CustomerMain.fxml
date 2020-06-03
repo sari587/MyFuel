@@ -35,7 +35,7 @@
                            <children>
                               <ImageView fitHeight="624.0" fitWidth="734.0" layoutX="-26.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../OneDrive/שולחן%20העבודה/Eng/beautiful-color-gradients-backgrounds-091-eternal-constance.png" />
+                                    <Image url="" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />

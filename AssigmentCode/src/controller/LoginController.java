@@ -136,11 +136,11 @@ public class LoginController extends Application implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		// Media media = new Media("file:///C:/Snowy.mp4");
-		/// MediaPlayer player = new MediaPlayer(media);
-		// mediaView.setMediaPlayer(player);
-		// player.setVolume(0);
-		// player.play();
+		 Media media = new Media("file:///C:/Snowy.mp4");
+		 MediaPlayer player = new MediaPlayer(media);
+		 mediaView.setMediaPlayer(player);
+		 player.setVolume(0);
+		 player.play();
 	}
 
 }

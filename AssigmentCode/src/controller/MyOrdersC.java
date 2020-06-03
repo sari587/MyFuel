@@ -1,4 +1,4 @@
-package application;
+package controller;
 
 import java.io.IOException;
 
@@ -37,7 +37,7 @@ public class MyOrdersC extends Application {
 	public void addBtn(ActionEvent event) throws Exception {
 		((Node)event.getSource()).getScene().getWindow().hide(); //hiding primary window
 		Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/fx/Type.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/Type.fxml"));
         primaryStage.setTitle("Type");
         primaryStage.setScene(new Scene(root, 665, 462));
         primaryStage.show();

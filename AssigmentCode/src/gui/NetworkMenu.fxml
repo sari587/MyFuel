@@ -12,9 +12,7 @@
       <AnchorPane prefHeight="285.0" prefWidth="236.0">
          <children>
             <ImageView fitHeight="76.0" fitWidth="236.0" pickOnBounds="true" smooth="false">
-               <image>
-                  <Image url="@../../../../../Desktop/download.jpg" />
-               </image>
+              
             </ImageView>
             <Button fx:id="ViewReport" layoutX="137.0" layoutY="124.0" mnemonicParsing="false" text="View Report" />
             <Button fx:id="LogOut" layoutX="154.0" layoutY="220.0" mnemonicParsing="false" text="LogOut" />
