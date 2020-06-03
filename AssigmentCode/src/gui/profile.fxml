@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="515.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileController">
+   <children>
+      <AnchorPane prefHeight="130.0" prefWidth="472.0">
+         <children>
+            <ImageView fitHeight="90.0" fitWidth="472.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@../../../../../Desktop/download.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ProfileImage" fitHeight="126.0" fitWidth="109.0" layoutX="28.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/348-3487313_age-full-name-icon-png-transparent-png.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="AdminProfile" layoutX="144.0" layoutY="52.0" text="Admin Profile" textFill="#cfcfcf">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label fx:id="CustomerType" layoutX="57.0" layoutY="308.0" text="Customer Type" textFill="#226652">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="IdNumber" layoutX="57.0" layoutY="273.0" text="Id number" textFill="#226652">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Emale" layoutX="55.0" layoutY="239.0" text="E-male" textFill="#226652">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="FullName" layoutX="55.0" layoutY="206.0" text="Full Name" textFill="#226652">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="14.0" layoutY="203.0">
+         <image>
+            <Image url="@../../../../../AppData/Local/Temp/icons8_user_50px_2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="17.0" layoutY="240.0">
+         <image>
+            <Image url="@../../../../../AppData/Local/Temp/icons8_secured_letter_50px.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="14.0" layoutY="271.0">
+         <image>
+            <Image url="@../../../../../AppData/Local/Temp/icons8_identification_documents_24px.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="14.0" layoutY="306.0">
+         <image>
+            <Image url="@../../../../../AppData/Local/Temp/icons8_customer_insight_24px.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
