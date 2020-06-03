@@ -59,15 +59,20 @@ public class LoginController extends Application{
     	primaryStage.setScene(scene);
     	primaryStage.show();
     }
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/controller/LoginGUI.fxml"));
-        primaryStage.setTitle("Login_Gui");
-       primaryStage.setScene(new Scene(root, 400, 400));
-        primaryStage.show();
-    }
+  
 	public static void main(String[] args) {
 		launch(args);
+	}
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		  
+		   
+		        Parent root = FXMLLoader.load(getClass().getResource("/controller/LoginGUI.fxml"));
+		        primaryStage.setTitle("Login_Gui");
+		       primaryStage.setScene(new Scene(root, 400, 400));
+		        primaryStage.show();
+		    
 	}
 
 }
