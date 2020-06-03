@@ -36,7 +36,7 @@ public class OrderTableController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		Order o = new Order();
 		ResultSet rs = o.getOrders(); 
-	
+	///qwfesgrdhtfjygkhu
 		col_name.setCellValueFactory(new PropertyValueFactory<>("Order id"));
 		col_type.setCellValueFactory(new PropertyValueFactory<>("Order type"));
 		col_amount.setCellValueFactory(new PropertyValueFactory<>("Amount"));
