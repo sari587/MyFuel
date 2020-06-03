@@ -2,7 +2,7 @@ package controller;
 
 import javafx.scene.control.Alert;
 import javafx.stage.Window;
-
+//alert helper
 public class AlertHelper {
 
     public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {

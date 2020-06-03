@@ -3,12 +3,15 @@
 // license found at www.lloseng.com 
 package Server;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Entity.Account;
 import Entity.CompanyMarketingRep;
+import Entity.LoginAssistant;
 import controller.Packet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,18 +58,69 @@ public class EchoServer extends AbstractServer {
 	 * @param msg    The message received from the client.
 	 * @param client The connection from which the message originated.
 	 * @param
+	 * @throws IOException 
 	 */
-	public void handleMessageFromClient(Object msg, ConnectionToClient client) {
+	public void handleMessageFromClient(Object msg, ConnectionToClient client){
 		// System.out.println("Message received: " + msg + " from " + client);
 
 		Packet op = (Packet) msg;
 		switch (op.getActions()) {
 		case login: {
-
+			System.out.println("yessssssssss");
+			LoginAssistant account = (LoginAssistant)op.GetObj();
+			Statement s;
+			//SELECT Username FROM project.account where Username LIKE '%razi%';
+			try {
+				s=mysqlConnection.GetCon().createStatement();
+				ResultSet rs = s.executeQuery("SELECT * FROM project.account where Username LIKE '%"+account.getUsername()+"%'");
+				//System.out.println(rs);
+				
+				if(!rs.next())
+				{
+					Packet ans = new Packet(Packet.actions.login,"noUsername");
+					System.out.println("no username");
+					try {
+						client.sendToClient(ans);
+						return;
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}//noUsername worgpass success
+				}	
+				
+				if(!rs.getString(2).equals(account.getPassword()) ) {
+					System.out.println("wrongpass");
+					Packet ans = new Packet(Packet.actions.login,"worgpass");
+					try {
+						client.sendToClient(ans);
+						return;
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
+				}				
+				if(rs.getString(2).equals(account.getPassword())) {
+					System.out.println("success");
+					Packet ans = new Packet(Packet.actions.login,"success");
+					try {
+						client.sendToClient(ans);
+						return;
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		}
+		
 		case singup: {
 			try {
+				System.out.println("sdvf");
+				
 				CompanyMarketingRep.OnAddedUser(msg);
 				Packet t = new Packet(Packet.actions.singup,"The Account Has Been Added");
 				client.sendToClient(t);
@@ -120,25 +174,7 @@ public class EchoServer extends AbstractServer {
 		s.executeUpdate("UPDATE `test`.`employee` SET `job` = '" + value + "' WHERE (`id` = '" + id + "')");
 	}
 
-	public static ObservableList<employee> GetDataFromDataBase(Connection con) {
-		ObservableList<employee> people = FXCollections.observableArrayList();
-
-		Statement stmt;
-		try {
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM employee;");
-			while (rs.next()) {
-				people.add(new employee(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6)));
-			}
-			rs.close();
-			return people;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return people;
-	}
-
+	
 	/**
 	 * This method overrides the one in the superclass. Called when the server
 	 * starts listening for connections.

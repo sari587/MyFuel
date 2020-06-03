@@ -82,7 +82,7 @@ public class SignUpController extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/controller/SignUp.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/gui/SignUp.fxml"));
 
 		Scene scene = new Scene(root);
 		primaryStage.setTitle("Student Managment Tool");
@@ -143,8 +143,8 @@ public class SignUpController extends Application {
 
 	@FXML
 	private void initialize() {
-		Image Micon = new Image("/controller/MasterCardIcon.png");
-		Image Vicon = new Image("/controller/VisaIcon.png");
+		Image Micon = new Image("/gui/MasterCardIcon.png");
+		Image Vicon = new Image("/gui/VisaIcon.png");
 		MasterCardIcon.setImage(Micon);
 		VisaIcon.setImage(Vicon);
 		combobox.setItems(Items);
@@ -156,21 +156,27 @@ public class SignUpController extends Application {
 	public void SignUpClick() throws SQLException {
 		// ClientUI.chat.accept("Client SignUp");
 		// ClientUI.chat.accept("SignUp");
-		CreditCard cc;
-		if (!combobox.getValue().equals("Credit Card"))
-			cc = null;
-		else
-			cc = new CreditCard(Integer.parseInt(CCNumber.getText()), Integer.parseInt(CCC.getText()),Integer.parseInt(CCMDate.getText()), Integer.parseInt(CCYDate.getText()));
+		if (username.getText().isEmpty() || password.getText().isEmpty() || name.getText().isEmpty()
+				|| fname.getText().isEmpty() || idnum.getText().isEmpty() || emailField.getText().isEmpty()) {
+			Window owner = submitButton.getScene().getWindow();
+			AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Alert Message", "Please fill all the fields");
+		} else {
+			CreditCard cc;
+			if (!combobox.getValue().equals("Credit Card"))
+				cc = null;
+			else
+				cc = new CreditCard(Integer.parseInt(CCNumber.getText()), Integer.parseInt(CCC.getText()),
+						Integer.parseInt(CCMDate.getText()), Integer.parseInt(CCYDate.getText()));
 
-		Account account = new Account(username.getText(), password.getText(), name.getText(), fname.getText(),Integer.parseInt(idnum.getText()), emailField.getText(), cc);
-		Packet packet = new Packet(Packet.actions.singup, account);
-		ClientUI.chat.accept(packet);
-		   Window owner = submitButton.getScene().getWindow();
-			  AlertHelper.showAlert(Alert.AlertType.INFORMATION, owner, "Alert Message", 
-	                  " " +username.getText()+ " Has been succesfully Added");
-		
+			Account account = new Account(username.getText(), password.getText(), Account.status.Customer,
+					name.getText(), fname.getText(), Integer.parseInt(idnum.getText()), emailField.getText(), cc, 0);
+			Packet packet = new Packet(Packet.actions.singup, account);
+			ClientUI.chat.accept(packet);
+			Window owner = submitButton.getScene().getWindow();
+			AlertHelper.showAlert(Alert.AlertType.INFORMATION, owner, "Alert Message",
+					" " + username.getText() + " Has been succesfully Added");
+		}
 	}
-	
 
 	public static void main(String[] args) {
 		launch(args);

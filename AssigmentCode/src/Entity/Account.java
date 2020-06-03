@@ -1,11 +1,13 @@
 package Entity;
 
 import java.io.Serializable;
-
+ 
 public class Account implements Serializable {
 	/**
 	 * 
-	 */
+	 */public static enum status {
+			Customer, Worker
+	 };
 	private static final long serialVersionUID = -7631436194844831449L;
 	/**
 	 * 
@@ -18,10 +20,13 @@ public class Account implements Serializable {
 	private int IdNum;
 	private String Email;
 	private CreditCard CreditCard=null;
+	private int logged=0;
+	private status status;
 
-	public Account(String username, String password, String name, String familyName, int idNum, String email,
-			Entity.CreditCard creditCard) {
-		
+	public Account(String username, String password,status status, String name, String familyName, int idNum, String email,
+			Entity.CreditCard creditCard,int logged) {
+		this.status=status;
+		this.logged=logged;
 		Username = username;
 		Password = password;
 		this.name = name;
@@ -29,6 +34,12 @@ public class Account implements Serializable {
 		IdNum = idNum;
 		Email = email;
 		CreditCard = creditCard;
+	}
+	public int getLogged() {
+		return logged;
+	}
+	public void setLogged(int logged) {
+		this.logged = logged;
 	}
 	public String getFamilyName() {
 		return FamilyName;

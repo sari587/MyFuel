@@ -4,13 +4,15 @@ import java.io.Serializable;
 
 
 public class Packet implements Serializable {
-	public static enum actions {
-		login,singup,massage
-	};
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 308370729595755759L;
+	private static final long serialVersionUID = -5059817243216020235L;
+	public static enum actions {
+		login,singup,massage
+	};
+	
+
 	private actions action;
 	private Object obj;
 	

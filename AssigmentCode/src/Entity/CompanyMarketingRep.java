@@ -18,9 +18,10 @@ public class CompanyMarketingRep {
 		if(account.getCreditCard()!=null)
 			haveCreditCard=1;
 		else
+			
 			haveCreditCard=0;
-		String UpdateValues=new String("('"+account.getUsername()+"', '"+account.getPassword()+"', '"+"customer"+"', '"+account.getName()+"', '"+account.getFamilyName()+"', '"+account.getEmail()+"', '"+haveCreditCard+"')");
-		s.execute("INSERT INTO `project`.`account` (`Username`, `Password`, `status`, `name`, `familyName`, `email`, `creditcard`) VALUES "+UpdateValues);
+		String UpdateValues=new String("('"+account.getUsername()+"', '"+account.getPassword()+"', '"+"customer"+"', '"+account.getName()+"', '"+account.getFamilyName()+"', '"+account.getEmail()+"', '"+haveCreditCard+"', '"+0+"')");
+		s.execute("INSERT INTO `project`.`account` (`Username`, `Password`, `status`, `name`, `familyName`, `email`, `creditcard`, `logged`) VALUES "+UpdateValues);
 
 		
 	}

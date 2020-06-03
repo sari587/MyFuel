@@ -6,10 +6,13 @@ package client;
 
 import client.*;
 import common.ChatIF;
+import controller.AlertHelper;
+import controller.LoginController;
 import controller.Packet;
 import controller.SignUpController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import ocsf.client.AbstractClient;
 
 import java.io.*;
@@ -17,8 +20,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import Entity.CompanyMarketingRep;
-import Server.employee;
 
+//fgchjkl
 
 /**
  * This class overrides some of the methods defined in the abstract superclass
@@ -42,7 +45,7 @@ public class ChatClient extends AbstractClient {
 	// Faculty(null,null));
 	public static boolean awaitResponse = false;
 
-	public static ObservableList<employee> ee = FXCollections.observableArrayList();;
+	
 	// Constructors ****************************************************
 
 	/**
@@ -69,7 +72,14 @@ public class ChatClient extends AbstractClient {
 		Packet op = (Packet) msg;
 		switch (op.getActions()) {
 		case login: {
-
+			//obj the server seds in login case is a String //noUsername worgpass success
+			
+			try {
+				LoginController.lc.handleLoginFromServer(msg);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		}
 		case singup: {
@@ -101,13 +111,7 @@ public class ChatClient extends AbstractClient {
 			awaitResponse = true;
 			sendToServer(message);
 			// wait for response
-			while (awaitResponse) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
+			
 		}
 
 		catch (IOException e) {

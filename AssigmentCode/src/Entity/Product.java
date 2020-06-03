@@ -20,7 +20,7 @@ public void setPrice(int price) {
 	this.price = price;
 }
 public int getRate() {
-	return rate.getRatePrice();
+	return 0;//ythrgfds
 			
 }
 public void setRate(Rates rate) {
