@@ -35,6 +35,9 @@ public class Order {
 		this.due = due;
 	}
 
+	public Order() {
+	}
+
 	public String getOrderType() {
 		return OrderType;
 	}
@@ -78,20 +81,37 @@ public class Order {
 		}
 	}
 	
-    public Order getOrderbyName (String name) {
-    	ResultSet  rs;
-    	Statement s;
-    	  try {
-    		s=mysqlConnection.GetCon().createStatement();
-			rs = s.executeQuery("SELECT * FROM project.orders where nmae LIKE '%"+name+"%'");
-	    	return new Order(rs.getString(1), rs.getInt(2), rs.getString(3),rs.getInt(4), OrderStatus.Available, rs.getString(6) ,rs.getString(7)) ;
+	 public Order getOrderbyName (String name) {
+	    	ResultSet  rs;
+	    	Statement s;
+	    	  try {
+	    		s=mysqlConnection.GetCon().createStatement();
+				rs = s.executeQuery("SELECT * FROM project.orders where ordername LIKE '%"+name+"%'");
+		    	return new Order(rs.getString(1), rs.getInt(2), rs.getString(3),rs.getInt(4), OrderStatus.Available, rs.getString(6) ,rs.getString(7)) ;
 
-			} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	//String orderType, int amount, String orderName, int orderCost, Entity.OrderStatus orderStatus,String date, String due) {
-		return null;
-  		
-    }
+				} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	//String orderType, int amount, String orderName, int orderCost, Entity.OrderStatus orderStatus,String date, String due) {
+			return null;
+	  		
+	    }
+	 
+	 public ResultSet getOrders() {
+	    	ResultSet  rs;
+	    	Statement s;
+	    	  try {
+	    		s=mysqlConnection.GetCon().createStatement();
+				rs = s.executeQuery("SELECT * FROM project.orders'");
+		    	return rs;
+
+				} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	//String orderType, int amount, String orderName, int orderCost, Entity.OrderStatus orderStatus,String date, String due) {
+			return null;
+	  		
+	    }
 }
